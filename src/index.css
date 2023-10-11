@@ -1,10 +1,33 @@
+:root {
+  --montserrat-extra-ligth: 200;
+  --montserrat-ligth: 300;
+  --montserrat-regular: 400;
+  --montserrat-medium: 500;
+  --montserrat-bold: 600;
+  --background-main: #27005D;
+  --background-secundary: #9400FF;
+  --color-main: #fff;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background-main);
+  color: var(--color-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#root {
+  background-color: var(--background-secundary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 90%;
+  width: 500px;
 }
 
 code {

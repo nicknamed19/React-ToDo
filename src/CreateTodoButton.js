@@ -1,6 +1,14 @@
+import './CreateTodoButton.css'
+
 function CreateTodoButton() {
+    const clickButton = event => {
+        console.log(event);
+    }
     return(
-        <button>New ToDo</button>
+        <button 
+            className="addTask"
+            onClick={clickButton}
+        >+</button>
     );
 }
 
