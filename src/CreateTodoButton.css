@@ -1,0 +1,26 @@
+.addTask {
+    font-size: 60px;
+    font-weight: var(--montserrat-medium);
+    font-family: 'Montserrat', sans-serif;
+    height: 64px;
+    width: 64px;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #31E1F7;
+    border: none;
+    box-shadow: 0px 0px 6px 3px #79E0EE;
+    color: var(--color-main);
+    position: fixed;
+    bottom: 32px;
+
+    transform: rotate(0);
+    transition: .3s ease;
+}
+
+.addTask:hover {
+    transform: rotate(224deg);
+}

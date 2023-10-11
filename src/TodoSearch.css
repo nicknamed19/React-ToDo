@@ -1,0 +1,29 @@
+.containSearch {
+    width: 300px;
+    margin: 34px auto;
+    height: 30px;
+    position: relative;
+}
+
+.inputSearch {
+    width: 300px;
+    border-radius: 8px;
+    border: 2px solid #31E1F7;
+    font-family: var(--montserrat-medium);
+    padding: 6px;
+    box-shadow: -3px 3px 3px 0 #27005D;
+    outline-color: #31E1F7;
+}
+
+.containSearch .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    color: darkgray;
+}
+

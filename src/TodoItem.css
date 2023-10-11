@@ -1,0 +1,43 @@
+.todo-item {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #51557E;
+    margin-bottom: 26px;
+    border-radius: 12px;
+    padding: 0 12px;
+    align-items: center;
+    box-shadow: -3px 3px 3px 0 #27005D;
+}
+
+.task-check--container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  cursor: pointer;
+}
+
+.check-hover:hover {
+  color: #16FF00;
+}
+
+.cancel-hover:hover {
+  color: red;
+}
+
+.check-activate {
+  color: #16FF00;
+}
+
+.task-complete {
+  text-decoration: line-through;
+}

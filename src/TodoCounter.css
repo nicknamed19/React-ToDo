@@ -1,0 +1,9 @@
+.title {
+    font-weight: var(--montserrat-medium);
+    text-align: center;
+    margin: 34px 0 0 0;
+}
+
+.title span {
+    font-weight: var(--montserrat-bold);
+}
