@@ -21,11 +21,11 @@ function App() {
   //ESTADOS PARA MANEJAR LOS TODOS
   const [todos, setTodos] = React.useState(arrayTodo);  
 
-  //FUNCIONALIDAD PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
+  //ESTADOS DERIVADOS PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
   let completedTodos  = todos.filter(todo => !!todo.completed).length;
   let totalTodos = todos.length;
 
-  //FILTRO PARA EL BUSCADOR DE TODOS
+  //FILTRO PARA EL BUSCADOR DE TODOS |ESTADO DERIVADO|
   const sercheadTodo = todos.filter((todo) => {
     const todoText = todo.text.toLowerCase();
     const searchText = searchValue.toLowerCase();
