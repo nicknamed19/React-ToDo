@@ -11,15 +11,33 @@ const arrayTodo = [
   {text: 'Terminar el curso de React', completed: false},
   {text: 'Hacer el almuerzo', completed: true},
   {text: 'Buscar trabajo', completed: false}
-]
+] 
+
+
 
 //COMPONENTES
 function App() {
+
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  let parseTodos;
+
+  if (!localStorageTodos) {
+    parseTodos = localStorage.setItem('TODOS_V1', JSON.stringify(arrayTodo));
+  } else {
+    parseTodos = JSON.parse(localStorageTodos);
+  }
+
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
+    setTodos(newTodos);
+  }
+
   //ESTADOS PARA MANEJAR EL BUSCADOR
   const [searchValue, setSearchValue] = React.useState('');
 
   //ESTADOS PARA MANEJAR LOS TODOS
-  const [todos, setTodos] = React.useState(arrayTodo);  
+  const [todos, setTodos] = React.useState(parseTodos);  
 
   //ESTADOS DERIVADOS PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
   let completedTodos  = todos.filter(todo => !!todo.completed).length;
@@ -40,7 +58,7 @@ function App() {
       (todo) => todo.text == text
     )
     newTodos[todoIndex].completed ? (newTodos[todoIndex].completed = false) : (newTodos[todoIndex].completed = true);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   //FUNCION PARA ELIMINAR TODOS
@@ -50,7 +68,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   return (

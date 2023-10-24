@@ -15,6 +15,7 @@ function TodoItem(props){
           <p className={props.completed ? "task-complete" : ''}>{props.text}</p>
 
         </div>
+        
         <span 
           className='material-symbols-outlined cancel-hover'
           onClick={props.deleteTask}
