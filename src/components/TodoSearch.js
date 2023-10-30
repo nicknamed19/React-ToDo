@@ -21,4 +21,4 @@ function TodoSearch({ searchValue, setSearchValue }) {
     );
 }
 
-export { TodoSearch }
+export { TodoSearch };

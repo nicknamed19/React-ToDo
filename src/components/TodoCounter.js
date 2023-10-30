@@ -16,4 +16,4 @@ function TodoCounter({ completed, total }) {
     )
 }
 
-export { TodoCounter }
+export { TodoCounter };

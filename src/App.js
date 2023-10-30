@@ -1,8 +1,5 @@
-import { TodoCounter } from './components/TodoCounter';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoList } from './components/TodoList';
-import { TodoItem } from './components/TodoItem';
-import { CreateTodoButton } from './components/CreateTodoButton';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { AppUI } from './components/AppUI';
 import React from 'react';
 
 //VARIABLES
@@ -12,31 +9,6 @@ const arrayTodo = [
   {text: 'Hacer el almuerzo', completed: true},
   {text: 'Buscar trabajo', completed: false}
 ] 
-
-function useLocalStorage(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-
-  let parseTodos;
-
-  if (!localStorageItem) {
-    parseTodos = localStorage.setItem(itemName, JSON.stringify(initialValue));
-  } else {
-    parseTodos = JSON.parse(localStorageItem);
-  }
-
-  const [items, setItems] = React.useState(parseTodos)
-
-  const saveItems = (newTodos) => {
-    localStorage.setItem(itemName, JSON.stringify(newTodos))
-    setItems(newTodos);
-  }
-
-  return [
-    items,
-    saveItems,
-  ]
-}
-
 
 function App() {
   
@@ -78,32 +50,17 @@ function App() {
 
     return todoText.includes(searchText);
   });
-
   
   return (
-    <>
-      
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-        
-      <TodoList>
-          {sercheadTodo.map(todo => 
-            <TodoItem 
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}         
-            checkedTask={() => checkedTask(todo.text)}
-            deleteTask={() => deleteTask(todo.text)}
-            />
-          )}
-      </TodoList>
-
-      <CreateTodoButton />
-      
-    </>
+    <AppUI
+    completedTodos = {completedTodos}
+    totalTodos = {totalTodos}
+    searchValue = {searchValue}
+    setSearchValue = {setSearchValue}
+    sercheadTodo = {sercheadTodo}
+    checkedTask = {checkedTask}
+    deleteTask = {deleteTask}
+    />
   );
 }
 
