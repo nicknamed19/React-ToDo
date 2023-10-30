@@ -1,8 +1,8 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
+import { TodoCounter } from './components/TodoCounter';
+import { TodoSearch } from './components/TodoSearch';
+import { TodoList } from './components/TodoList';
+import { TodoItem } from './components/TodoItem';
+import { CreateTodoButton } from './components/CreateTodoButton';
 import React from 'react';
 
 //VARIABLES
@@ -13,49 +13,45 @@ const arrayTodo = [
   {text: 'Buscar trabajo', completed: false}
 ] 
 
-
-
-//COMPONENTES
-function App() {
-
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
 
   let parseTodos;
 
-  if (!localStorageTodos) {
-    parseTodos = localStorage.setItem('TODOS_V1', JSON.stringify(arrayTodo));
+  if (!localStorageItem) {
+    parseTodos = localStorage.setItem(itemName, JSON.stringify(initialValue));
   } else {
-    parseTodos = JSON.parse(localStorageTodos);
+    parseTodos = JSON.parse(localStorageItem);
   }
 
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
-    setTodos(newTodos);
+  const [items, setItems] = React.useState(parseTodos)
+
+  const saveItems = (newTodos) => {
+    localStorage.setItem(itemName, JSON.stringify(newTodos))
+    setItems(newTodos);
   }
 
-  //ESTADOS PARA MANEJAR EL BUSCADOR
-  const [searchValue, setSearchValue] = React.useState('');
+  return [
+    items,
+    saveItems,
+  ]
+}
 
+
+function App() {
+  
   //ESTADOS PARA MANEJAR LOS TODOS
-  const [todos, setTodos] = React.useState(parseTodos);  
-
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', arrayTodo);  
+  
   //ESTADOS DERIVADOS PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
   let completedTodos  = todos.filter(todo => !!todo.completed).length;
   let totalTodos = todos.length;
-
-  //FILTRO PARA EL BUSCADOR DE TODOS |ESTADO DERIVADO|
-  const sercheadTodo = todos.filter((todo) => {
-    const todoText = todo.text.toLowerCase();
-    const searchText = searchValue.toLowerCase();
-
-    return todoText.includes(searchText);
-  });
 
   //FUNCION PARA HACER TOGGLE CUANDO UN TASK ESTA COMPLETADO
   const checkedTask = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     )
     newTodos[todoIndex].completed ? (newTodos[todoIndex].completed = false) : (newTodos[todoIndex].completed = true);
     saveTodos(newTodos);
@@ -65,12 +61,25 @@ function App() {
   const deleteTask = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
 
+  
+  //ESTADOS PARA MANEJAR EL BUSCADOR
+  const [searchValue, setSearchValue] = React.useState('');
+  
+  //FILTRO PARA EL BUSCADOR DE TODOS |ESTADO DERIVADO|
+  const sercheadTodo = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+
+    return todoText.includes(searchText);
+  });
+
+  
   return (
     <>
       

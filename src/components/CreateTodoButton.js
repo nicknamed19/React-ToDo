@@ -1,4 +1,4 @@
-import './CreateTodoButton.css'
+import '../styles/CreateTodoButton.css'
 
 function CreateTodoButton() {
     const clickButton = event => {
