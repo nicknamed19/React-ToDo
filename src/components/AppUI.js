@@ -12,6 +12,8 @@ function AppUI ({
     sercheadTodo,
     checkedTask,
     deleteTask,
+    loading,
+    error,
 }) {
     return (
     <>
@@ -23,6 +25,9 @@ function AppUI ({
       />
         
       <TodoList>
+          {loading && <p>Cargando....</p>}
+          {error && <p>Error, intentalo nuevamente</p>}
+          
           {sercheadTodo.map(todo => 
             <TodoItem 
             key={todo.text}

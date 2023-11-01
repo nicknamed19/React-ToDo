@@ -13,7 +13,12 @@ const arrayTodo = [
 function App() {
   
   //ESTADOS PARA MANEJAR LOS TODOS
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', arrayTodo);  
+  const {
+    items : todos,
+    saveItems : saveTodos,
+    loading,
+    error,
+    } = useLocalStorage('TODOS_V1', arrayTodo);  
   
   //ESTADOS DERIVADOS PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
   let completedTodos  = todos.filter(todo => !!todo.completed).length;
@@ -53,6 +58,8 @@ function App() {
   
   return (
     <AppUI
+    loading = {loading}
+    error = {error}
     completedTodos = {completedTodos}
     totalTodos = {totalTodos}
     searchValue = {searchValue}
