@@ -1,8 +1,10 @@
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoSearch } from '../components/TodoSearch';
-import { TodoList } from '../components/TodoList';
-import { TodoItem } from '../components/TodoItem';
-import { CreateTodoButton } from '../components/CreateTodoButton';
+import { TodoCounter } from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { LoadingTodos } from './LoadingTodos';
+import { ErrorTodos } from './ErrorTodos';
+import { CreateTodoButton } from './CreateTodoButton';
 
 function AppUI ({
     completedTodos,
@@ -16,32 +18,39 @@ function AppUI ({
     error,
 }) {
     return (
-    <>
-      
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-        
-      <TodoList>
-          {loading && <p>Cargando....</p>}
-          {error && <p>Error, intentalo nuevamente</p>}
-          
-          {sercheadTodo.map(todo => 
-            <TodoItem 
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}         
-            checkedTask={() => checkedTask(todo.text)}
-            deleteTask={() => deleteTask(todo.text)}
-            />
-          )}
-      </TodoList>
+      <>
+        {loading 
+          ? <LoadingTodos/> 
+          : <>
+              <TodoCounter 
+                completed={completedTodos} 
+                total={totalTodos} 
+              />
 
-      <CreateTodoButton />
-      
-    </>
+              <TodoSearch 
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
+
+              <CreateTodoButton />
+            </>
+        }
+        
+        {error && <ErrorTodos/>}
+          
+        <TodoList>
+            {sercheadTodo.map(todo => 
+              <TodoItem 
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}         
+              checkedTask={() => checkedTask(todo.text)}
+              deleteTask={() => deleteTask(todo.text)}
+              />
+            )}
+        </TodoList>        
+        
+      </>
     );
 }
 

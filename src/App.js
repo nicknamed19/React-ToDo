@@ -3,12 +3,12 @@ import { AppUI } from './components/AppUI';
 import React from 'react';
 
 //VARIABLES
-const arrayTodo = [
+/*const arrayTodo = [
   {text: 'Cortar tomate', completed: false},
   {text: 'Terminar el curso de React', completed: false},
   {text: 'Hacer el almuerzo', completed: true},
   {text: 'Buscar trabajo', completed: false}
-] 
+]*/ 
 
 function App() {
   
@@ -18,7 +18,7 @@ function App() {
     saveItems : saveTodos,
     loading,
     error,
-    } = useLocalStorage('TODOS_V1', arrayTodo);  
+    } = useLocalStorage('TODOS_V1', []);  
   
   //ESTADOS DERIVADOS PARA INDICAR LA CANTIDAD DE TODOS Y LOS COMPLETADOS EN LA APP
   let completedTodos  = todos.filter(todo => !!todo.completed).length;
