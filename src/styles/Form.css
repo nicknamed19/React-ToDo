@@ -1,0 +1,47 @@
+.form {
+    background-color: #39B5E0;
+    width: 300px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 18px;
+}
+
+.form p {
+    color: var(--color-main);
+    font-weight: var(--montserrat-medium);
+    font-size: 20px;
+    margin: 24px 0;
+}
+
+.form textarea {
+  width: 190px;
+  height: 80px;
+  resize: none;
+  margin-bottom: 24px;
+}
+
+.TodoForm-button-content {
+    width: 190px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.TodoForm-button {
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 8px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+    color: var(--color-main);
+    height: 25px;
+    width: 85px;
+    cursor: pointer;
+}
+
+.cancelar {
+    border: 2px solid red;
+}
+
+.agregar {    
+    border: 2px solid #16FF00;
+}

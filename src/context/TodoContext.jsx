@@ -50,6 +50,15 @@ function ProviderTodos({children}) {
         return todoText.includes(searchText);
     });
 
+    const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+            text,
+            completed: false,
+        })
+        saveTodos(newTodos);
+    };
+
     const [openModal, setOpenModal] = React.useState(false);
 
     return(
@@ -63,6 +72,7 @@ function ProviderTodos({children}) {
             sercheadTodo, 
             checkedTask, 
             deleteTask,
+            addTodo,
             openModal, 
             setOpenModal,
         }}>

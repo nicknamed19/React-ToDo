@@ -7,6 +7,7 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 import { Modal } from './Modal';
+import { Form } from './Form';
 import { TodoContext } from '../context/TodoContext';
 
 function AppUI () {
@@ -47,7 +48,7 @@ function AppUI () {
 
            {openModal &&
             <Modal>
-            Renderizar TODO
+              <Form></Form>
             </Modal>
            } 
             
