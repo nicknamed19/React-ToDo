@@ -15,7 +15,6 @@ body {
   background-color: var(--background-main);
   color: var(--color-main);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -32,6 +31,13 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+}
+
+
+@media (max-width:750px) {
+  #root {
+    height: 100%;
+    width: 100%;
+  }
 }
