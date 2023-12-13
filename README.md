@@ -13,10 +13,10 @@ This project is a simple Todo application developed using React. It allows users
 ### Installation
 To run this project locally, follow these steps:
 
-Clone the repository: **git clone https://github.com/nicknamed19/React-ToDo**
-Navigate to the project directory: **cd your-repository**
-Install dependencies: **npm install**
-Start the development server: **npm start**
+* Clone the repository: **git clone https://github.com/nicknamed19/React-ToDo**
+* Navigate to the project directory: **cd your-repository**
+* Install dependencies: **npm install**
+* Start the development server: **npm start**
 
 ### Usage
 Once the development server is running, access the application in your web browser at **http://localhost:3000.**
