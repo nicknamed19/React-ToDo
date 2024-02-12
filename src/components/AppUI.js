@@ -1,4 +1,5 @@
 import React from 'react';
+import { TodoHeader } from './TodoHeader';
 import { ErrorTodos } from './ErrorTodos';
 import { LoadingTodos } from './LoadingTodos';
 import { TodoCounter } from './TodoCounter';
@@ -19,6 +20,10 @@ function AppUI () {
     checkedTask, 
     deleteTask, 
     openModal,
+    completedTodos, 
+    totalTodos,
+    searchValue, 
+    setSearchValue,
   } = React.useContext(TodoContext)
 
   return (
@@ -28,9 +33,17 @@ function AppUI () {
       {loading 
         ? <LoadingTodos/> 
         : <>
-            <TodoCounter />
-      
-            <TodoSearch />
+            <TodoHeader>
+              <TodoCounter
+                completedTodos={completedTodos} 
+                totalTodos={totalTodos}
+              />
+        
+              <TodoSearch 
+                searchValue={searchValue} 
+                setSearchValue={setSearchValue}
+              />
+            </TodoHeader>
 
             <TodoList>
               {sercheadTodo.map(todo => 
@@ -52,7 +65,8 @@ function AppUI () {
             </Modal>
            } 
             
-          </>}
+          </>
+      }
     </>
   )
 }        
