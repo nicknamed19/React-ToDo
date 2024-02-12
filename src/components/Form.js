@@ -1,12 +1,8 @@
-import { useContext, useState } from 'react';
 import '../styles/Form.css'
-import { TodoContext } from '../context/TodoContext';
+import { useState } from 'react';
 
-function Form() {
-    const {
-        addTodo,
-        setOpenModal,
-    } = useContext(TodoContext);
+
+function Form({ addTodo, setOpenModal }) {
 
     const [newTodosValue, setNewTodoValue] = useState('');
     

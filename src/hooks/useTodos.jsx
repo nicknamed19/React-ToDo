@@ -1,10 +1,8 @@
 import React from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const TodoContext = React.createContext();
 
-function ProviderTodos({children}) {
-    
+function useTodos() {
 
      //ESTADOS PARA MANEJAR LOS TODOS
     const {
@@ -61,25 +59,21 @@ function ProviderTodos({children}) {
 
     const [openModal, setOpenModal] = React.useState(false);
 
-    return(
-        <TodoContext.Provider value={{
-            loading, 
-            error, 
-            completedTodos, 
-            totalTodos, 
-            searchValue, 
-            setSearchValue, 
-            sercheadTodo, 
-            checkedTask, 
-            deleteTask,
-            addTodo,
-            openModal, 
-            setOpenModal,
-        }}>
-            {children}
-        </TodoContext.Provider>
-    )
+    return{
+        loading, 
+        error, 
+        completedTodos, 
+        totalTodos, 
+        searchValue, 
+        setSearchValue, 
+        sercheadTodo, 
+        checkedTask, 
+        deleteTask,
+        addTodo,
+        openModal, 
+        setOpenModal,
+    }
 }
 
 
-export { TodoContext, ProviderTodos };
+export { useTodos };

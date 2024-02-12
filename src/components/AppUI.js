@@ -9,7 +9,7 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 import { Modal } from './Modal';
 import { Form } from './Form';
-import { TodoContext } from '../context/TodoContext';
+import { useTodos } from '../hooks/useTodos';
 
 function AppUI () {
 
@@ -24,7 +24,7 @@ function AppUI () {
     totalTodos,
     searchValue, 
     setSearchValue,
-  } = React.useContext(TodoContext)
+  } = useTodos()
 
   return (
     <>
