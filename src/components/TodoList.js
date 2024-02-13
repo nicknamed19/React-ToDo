@@ -1,9 +1,9 @@
 import '../styles/TodoList.css'
 
-function TodoList({sercheadTodo, render}) {
+function TodoList({sercheadTodo, render, totalTodos, onEmptySearchedTodos }) {
     return(
         <ul>
-            {sercheadTodo.map(render)}
+            {(!sercheadTodo.length && totalTodos) ? onEmptySearchedTodos : sercheadTodo.map(render)}
         </ul>
     )
 }

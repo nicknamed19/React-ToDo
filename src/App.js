@@ -10,6 +10,7 @@ import { CreateTodoButton } from './components/CreateTodoButton';
 import { Modal } from './components/Modal';
 import { Form } from './components/Form';
 import { useTodos } from './hooks/useTodos';
+import { EmptySearchedTodos } from './components/EmptySearchedTodos';
 
 //VARIABLES
 /*const arrayTodo = [
@@ -57,6 +58,8 @@ function App() {
 
             <TodoList
               sercheadTodo={sercheadTodo}
+              totalTodos={totalTodos}
+              onEmptySearchedTodos={<EmptySearchedTodos searchText={searchValue}/>}
               render={(todo => 
                 <TodoItem 
                   key={todo.text}
