@@ -1,9 +1,9 @@
 import '../styles/TodoList.css'
 
-function TodoList(props) {
+function TodoList({sercheadTodo, render}) {
     return(
         <ul>
-            {props.children}
+            {sercheadTodo.map(render)}
         </ul>
     )
 }

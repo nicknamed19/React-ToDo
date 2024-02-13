@@ -55,8 +55,9 @@ function App() {
               />
             </TodoHeader>
 
-            <TodoList>
-              {sercheadTodo.map(todo => 
+            <TodoList
+              sercheadTodo={sercheadTodo}
+              render={(todo => 
                 <TodoItem 
                   key={todo.text}
                   text={todo.text}
@@ -65,7 +66,7 @@ function App() {
                   deleteTask={() => deleteTask(todo.text)}
                 />
               )}
-            </TodoList>
+            />
       
             <CreateTodoButton 
               setOpenModal={setOpenModal}
