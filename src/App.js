@@ -11,6 +11,7 @@ import { Modal } from './components/Modal';
 import { Form } from './components/Form';
 import { useTodos } from './hooks/useTodos';
 import { EmptySearchedTodos } from './components/EmptySearchedTodos';
+import { ChangeAlertWithStorageListener } from './components/ChangeAlert'
 
 //VARIABLES
 /*const arrayTodo = [
@@ -83,6 +84,8 @@ function App() {
                 />
               </Modal>
             } 
+
+            <ChangeAlertWithStorageListener />
             
           </>
       }
