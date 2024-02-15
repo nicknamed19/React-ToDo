@@ -1,13 +1,17 @@
 import React from "react";
 import { withStorageListener } from './withStorageListener'
 
-function ChangeAlert ({show, toggleShow}) {
+function ChangeAlert ({show, toggleShow, synchronizeTodos}) {
     if (show) {
         return (
             <div>
                 <p>Hubo cambios</p>
                 <button
-                    onClick={() => toggleShow(false)}
+                    onClick={() => {
+                        synchronizeTodos()
+                        toggleShow()
+                    }}
+                    
                 >Actualizar info</button>
             </div>
         )
