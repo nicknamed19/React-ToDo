@@ -1,0 +1,43 @@
+.synchronize-container {
+    background-color: #39B5E0;
+    width: 450px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+.content {
+    color: var(--color-main);
+    font-weight: var(--montserrat-medium);
+    font-size: 20px;   
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.synchronize-button-container {
+    width: 190px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+}
+
+.synchronize-button {
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 8px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace;
+    color: var(--color-main);
+    height: 25px;
+    width: 85px;
+    cursor: pointer;
+}
+
+.accept {
+    border: 2px solid #16FF00;
+}
+
+.cancel {
+    border: 2px solid red;
+}
