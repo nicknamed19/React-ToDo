@@ -64,11 +64,11 @@ function HomePage() {
               onEmptySearchedTodos={<EmptySearchedTodos searchText={searchValue}/>}
               render={(todo => 
                 <TodoItem 
-                  key={todo.text}
+                  key={todo.id}
                   text={todo.text}
                   completed={todo.completed}         
-                  checkedTask={() => checkedTask(todo.text)}
-                  deleteTask={() => deleteTask(todo.text)}
+                  checkedTask={() => checkedTask(todo.id)}
+                  deleteTask={() => deleteTask(todo.id)}
                 />
               )}
             />

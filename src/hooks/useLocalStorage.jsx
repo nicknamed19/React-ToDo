@@ -3,11 +3,8 @@ import React from "react";
 function useLocalStorage(itemName, initialValue) {
   
     const [items, setItems] = React.useState(initialValue);
-
     const [loading, setLoading] = React.useState(true);
-
     const [error, setError] = React.useState(false);
-
     const [syncItems, setSyncItems] = React.useState(true);
 
     React.useEffect(() => {
