@@ -26,8 +26,17 @@
   cursor: pointer;
 }
 
+.cancel-edit-container {
+  display: flex;
+  gap: 10px;
+}
+
 .check-hover:hover {
   color: #16FF00;
+}
+
+.edit-hover:hover {
+  color: #31E1F7;
 }
 
 .cancel-hover:hover {
