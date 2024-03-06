@@ -27,6 +27,17 @@ function useTodos() {
         saveTodos(newTodos);
     }
 
+    //FUNCIÓN PARA EDITAR TODO'S
+    const editTodo = (id, newText) => {
+        const newTodos = [...todos];
+        const todoId = Number(id)
+        const todoIndex = newTodos.findIndex(
+            (todo) => todo.id === todoId
+        )
+        newTodos[todoIndex].text = newText
+        saveTodos(newTodos);
+    }
+
 
     //FUNCION PARA ELIMINAR TODOS
     const deleteTask = (id) => {
@@ -76,7 +87,8 @@ function useTodos() {
         addTodo,
         openModal, 
         setOpenModal,
-        synchronizeTodos
+        synchronizeTodos,
+        editTodo,
     }
 }
 

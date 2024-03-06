@@ -1,16 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import '../styles/Form.css'
 import { useState } from 'react';
 
-
-function Form({ addTodo, setOpenModal }) {
+function Form({ label, submitText, submitEvent }) {
+    const navigate = useNavigate()
 
     const [newTodosValue, setNewTodoValue] = useState('');
     
     const onSubmit = (event) => {
         event.preventDefault();
-        addTodo(newTodosValue);
-        setOpenModal(false);
-        
+        submitEvent(newTodosValue);
+        navigate('/');        
     }
     
     const onChange = (event) => {
@@ -18,12 +18,12 @@ function Form({ addTodo, setOpenModal }) {
     }
 
     const onCancel = () => {
-        setOpenModal(false);
+        navigate('/');
     }
 
     return(
         <form className="form" onSubmit={onSubmit}>
-            <p>Agrega una nueva tarea</p>
+            <p>{label}</p>
             <textarea 
                 placeholder='New task...'
                 value={newTodosValue}
@@ -41,7 +41,7 @@ function Form({ addTodo, setOpenModal }) {
                     className='TodoForm-button agregar'
                     type='submit'
                     onClick={onSubmit}
-                >Agregar</button>
+                >{submitText}</button>
             </div>
 
         </form>

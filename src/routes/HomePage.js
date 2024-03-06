@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TodoHeader } from '../components/TodoHeader';
 import { ErrorTodos } from '../components/ErrorTodos';
 import { LoadingTodos } from '../components/LoadingTodos';
@@ -7,8 +8,8 @@ import { TodoSearch } from '../components/TodoSearch';
 import { TodoList } from '../components/TodoList';
 import { TodoItem } from '../components/TodoItem';
 import { CreateTodoButton } from '../components/CreateTodoButton';
-import { Modal } from '../components/Modal';
-import { Form } from '../components/Form';
+/* import { Modal } from '../components/Modal';
+import { Form } from '../components/Form'; */
 import { useTodos } from '../hooks/useTodos';
 import { EmptySearchedTodos } from '../components/EmptySearchedTodos';
 import { ChangeAlertWithStorageListener } from '../components/ChangeAlert'
@@ -22,6 +23,7 @@ import { ChangeAlertWithStorageListener } from '../components/ChangeAlert'
 ]*/ 
 
 function HomePage() {
+  const navigate = useNavigate()
   
   const {
     loading, 
@@ -29,12 +31,12 @@ function HomePage() {
     sercheadTodo, 
     checkedTask, 
     deleteTask, 
-    openModal,
+    /* openModal, */
     completedTodos, 
     totalTodos,
     searchValue, 
     setSearchValue,
-    setOpenModal,
+    /* setOpenModal, */
     addTodo,
     synchronizeTodos
   } = useTodos()
@@ -69,22 +71,24 @@ function HomePage() {
                   completed={todo.completed}         
                   checkedTask={() => checkedTask(todo.id)}
                   deleteTask={() => deleteTask(todo.id)}
+                  editTask={() => navigate(`/edit/${todo.id}`)}
                 />
               )}
             />
       
             <CreateTodoButton 
-              setOpenModal={setOpenModal}
+              onClick={() => navigate('/new')}
+              /* setOpenModal={setOpenModal} */
             />
 
-            {openModal &&
+            {/* {openModal &&
               <Modal>
                 <Form 
                   setOpenModal={setOpenModal}
                   addTodo={addTodo}
                 />
               </Modal>
-            } 
+            }  */}
 
             <ChangeAlertWithStorageListener 
               synchronizeTodos={synchronizeTodos}

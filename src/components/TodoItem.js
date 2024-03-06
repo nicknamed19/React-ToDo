@@ -23,7 +23,7 @@ function TodoItem(props){
 
           <span 
             className="material-symbols-outlined edit-hover"
-            onClick={() => console.log('editar todo')}
+            onClick={props.editTask}
           >
             edit
           </span>
