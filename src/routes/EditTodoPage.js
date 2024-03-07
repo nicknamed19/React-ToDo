@@ -1,6 +1,7 @@
 import { useLocation, useParams } from "react-router-dom"
 import { Form } from "../components/Form"
 import { useTodos } from "../hooks/useTodos"
+import { LoadingTodos } from "../components/LoadingTodos";
 
 function EditTodoPage() {
     const location = useLocation();
@@ -13,7 +14,7 @@ function EditTodoPage() {
     if(location.state?.todo) {
         selectTodo = location.state.todo
     } else if (loading) {
-        return <p>cargando...</p>
+        return <LoadingTodos />
     } else {
         selectTodo = getTodo(todoId)
     }
