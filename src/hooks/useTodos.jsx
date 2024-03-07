@@ -4,6 +4,9 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function useTodos() {
 
+    //ESTADOS PARA MANEJAR EL BUSCADOR
+    const [searchValue, setSearchValue] = React.useState('');
+
      //ESTADOS PARA MANEJAR LOS TODOS
     const {
         items : todos,
@@ -30,14 +33,13 @@ function useTodos() {
     //FUNCIÓN PARA EDITAR TODO'S
     const editTodo = (id, newText) => {
         const newTodos = [...todos];
-        const todoId = Number(id)
+        
         const todoIndex = newTodos.findIndex(
-            (todo) => todo.id === todoId
+            (todo) => todo.id === id
         )
         newTodos[todoIndex].text = newText
         saveTodos(newTodos);
     }
-
 
     //FUNCION PARA ELIMINAR TODOS
     const deleteTask = (id) => {
@@ -49,10 +51,6 @@ function useTodos() {
         saveTodos(newTodos);
     }
 
-    
-    //ESTADOS PARA MANEJAR EL BUSCADOR
-    const [searchValue, setSearchValue] = React.useState('');
-    
     //FILTRO PARA EL BUSCADOR DE TODOS |ESTADO DERIVADO|
     const sercheadTodo = todos.filter((todo) => {
         const todoText = todo.text.toLowerCase();
@@ -61,6 +59,7 @@ function useTodos() {
         return todoText.includes(searchText);
     });
 
+    //FUNCION PARA AGREGAR NUEVOS TODO'S
     const addTodo = (text) => {
         const id = idGenerator(todos)
         const newTodos = [...todos];
@@ -72,7 +71,8 @@ function useTodos() {
         saveTodos(newTodos);
     };
 
-    const [openModal, setOpenModal] = React.useState(false);
+    const getTodo = (id) => todos.find(todo => todo.id === id)
+
 
     return{
         loading, 
@@ -85,10 +85,9 @@ function useTodos() {
         checkedTask, 
         deleteTask,
         addTodo,
-        openModal, 
-        setOpenModal,
         synchronizeTodos,
         editTodo,
+        getTodo,
     }
 }
 

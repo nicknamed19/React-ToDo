@@ -2,10 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/Form.css'
 import { useState } from 'react';
 
-function Form({ label, submitText, submitEvent }) {
+function Form({ label, submitText, submitEvent, selectTodo }) {
+
     const navigate = useNavigate()
 
-    const [newTodosValue, setNewTodoValue] = useState('');
+    const [newTodosValue, setNewTodoValue] = useState(selectTodo?.text || '');
     
     const onSubmit = (event) => {
         event.preventDefault();
@@ -13,22 +14,21 @@ function Form({ label, submitText, submitEvent }) {
         navigate('/');        
     }
     
-    const onChange = (event) => {
-        setNewTodoValue(event.target.value);
-    }
-
-    const onCancel = () => {
-        navigate('/');
-    }
+    const onChange = (event) => setNewTodoValue(event.target.value);
+    
+    const onCancel = () => navigate('/');
 
     return(
         <form className="form" onSubmit={onSubmit}>
+
             <p>{label}</p>
+
             <textarea 
                 placeholder='New task...'
                 value={newTodosValue}
                 onChange={onChange}
-            />
+            >{newTodosValue}</textarea>
+
             <div className='TodoForm-button-content'>
 
                 <button 
@@ -42,6 +42,7 @@ function Form({ label, submitText, submitEvent }) {
                     type='submit'
                     onClick={onSubmit}
                 >{submitText}</button>
+
             </div>
 
         </form>
