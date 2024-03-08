@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { TodoHeader } from '../components/TodoHeader';
 import { ErrorTodos } from '../components/ErrorTodos';
 import { LoadingTodos } from '../components/LoadingTodos';
@@ -21,7 +21,8 @@ import { ChangeAlertWithStorageListener } from '../components/ChangeAlert'
 ]*/ 
 
 function HomePage() {
-  const navigate = useNavigate()
+
+  const history = useHistory()
   
   const {
     loading, 
@@ -66,13 +67,18 @@ function HomePage() {
                   completed={todo.completed}         
                   checkedTask={() => checkedTask(todo.id)}
                   deleteTask={() => deleteTask(todo.id)}
-                  editTask={() => navigate(`/edit/${todo.id}`, { state : { todo }})}
+                  editTask={() => 
+                    history({
+                      pathname: `/edit/${todo.id}`, 
+                      state : { todo }
+                    })
+                  }
                 />
               )}
             />
       
             <CreateTodoButton 
-              onClick={() => navigate('/new')}
+              onClick={() => history('/new')}
             />
 
             <ChangeAlertWithStorageListener 

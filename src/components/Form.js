@@ -1,22 +1,22 @@
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../styles/Form.css'
 import { useState } from 'react';
 
 function Form({ label, submitText, submitEvent, selectTodo }) {
 
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const [newTodosValue, setNewTodoValue] = useState(selectTodo?.text || '');
     
     const onSubmit = (event) => {
         event.preventDefault();
         submitEvent(newTodosValue);
-        navigate('/');        
+        history.push('/');        
     }
     
     const onChange = (event) => setNewTodoValue(event.target.value);
     
-    const onCancel = () => navigate('/');
+    const onCancel = () => history.push('/');
 
     return(
         <form className="form" onSubmit={onSubmit}>

@@ -5,7 +5,8 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 function useTodos() {
 
     //ESTADOS PARA MANEJAR EL BUSCADOR
-    const [searchValue, setSearchValue] = React.useState('');
+    const [searchValue, setSearchValue] = React.useState('hola');
+    console.log(searchValue);
 
      //ESTADOS PARA MANEJAR LOS TODOS
     const {
@@ -54,6 +55,7 @@ function useTodos() {
     //FILTRO PARA EL BUSCADOR DE TODOS |ESTADO DERIVADO|
     const sercheadTodo = todos.filter((todo) => {
         const todoText = todo.text.toLowerCase();
+        
         const searchText = searchValue.toLowerCase();
 
         return todoText.includes(searchText);
