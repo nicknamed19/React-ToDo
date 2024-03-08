@@ -9,16 +9,15 @@ function TodoSearch({ searchValue, setSearchValue }) {
     function changeInput(event){
         const value = event.target.value
         setSearchValue(value)        
+        setSearchParams({ search: value })
     };
     
     
     React.useEffect(() => {
-        setSearchParams( searchValue )
-        const search = searchParams ?? '';
-        console.log(searchParams);
-        //setSearchValue(search);
+        const search = searchParams.search ?? '';
+        setSearchValue(search)
     }, [searchParams])
-
+    
     return(
         <div className='containSearch'>
             <input 

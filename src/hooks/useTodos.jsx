@@ -6,7 +6,6 @@ function useTodos() {
 
     //ESTADOS PARA MANEJAR EL BUSCADOR
     const [searchValue, setSearchValue] = React.useState('hola');
-    console.log(searchValue);
 
      //ESTADOS PARA MANEJAR LOS TODOS
     const {

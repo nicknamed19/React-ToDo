@@ -1,19 +1,19 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 
 function useSearchParams() {
+
   const location = useLocation();
+  const history = useHistory();
   const { search } = location;
-  console.log(location);
 
   const searchParams = queryString.parse(search);
 
   const setSearchParams = (newSearchParams) => {
-      console.log(newSearchParams);
     const newSearch = queryString.stringify(newSearchParams);
-    console.log(newSearch);
-    // Actualizar la ubicación del navegador con la nueva cadena de búsqueda
-    window.history.pushState(null, '', `${location.pathname}?${newSearch}`);
+    // Obtener la instancia de la historia y actualizar directamente la propiedad search
+    const newLocation = { ...location, search: `?${newSearch}` };
+    history.replace(newLocation);
   };
 
   return [searchParams, setSearchParams];

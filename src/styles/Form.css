@@ -6,6 +6,9 @@
     flex-direction: column;
     align-items: center;
     border-radius: 18px;
+    position: relative;
+    left: 100px;
+    top: calc(45% - 120px)
 }
 
 .form p {

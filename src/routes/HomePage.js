@@ -22,7 +22,7 @@ import { ChangeAlertWithStorageListener } from '../components/ChangeAlert'
 
 function HomePage() {
 
-  const history = useHistory()
+  const history = useHistory();
   
   const {
     loading, 
@@ -68,7 +68,7 @@ function HomePage() {
                   checkedTask={() => checkedTask(todo.id)}
                   deleteTask={() => deleteTask(todo.id)}
                   editTask={() => 
-                    history({
+                    history.push({
                       pathname: `/edit/${todo.id}`, 
                       state : { todo }
                     })
@@ -78,7 +78,7 @@ function HomePage() {
             />
       
             <CreateTodoButton 
-              onClick={() => history('/new')}
+              onClick={() => history.push('/new')}
             />
 
             <ChangeAlertWithStorageListener 
